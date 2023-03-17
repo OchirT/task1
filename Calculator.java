@@ -7,15 +7,16 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    //BinaryOperator<Integer> devide = (x, y) -> y > 0 ? y : y * -1;
     BinaryOperator<Integer> devide = (x, y) -> {
         if (y > 0) {
-            return (y);
-        } else  {
-            return y * -1;
-        }
+            return x / y;
+        } else throw new ArithmeticException("Ошибка! На 0 делить нельзя.") {
 
+        };// c return вылазит ошибка, или что должно возвращаться? не совсем понимаю!
     };
+    //BinaryOperator<Integer> devide = (x, y) -> y > 0 ? x / y : y * -1; // тернарный оператор
+    // (верная реализация?)
+
 
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
